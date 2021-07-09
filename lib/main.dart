@@ -5,17 +5,18 @@ import './helloUserWidget.dart';
 import './whatDidYouDoThisWeek.dart';
 
 
-
 void main() {
   runApp(MyApp());
 }
+
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'WorknRoll',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -30,6 +31,9 @@ class MyApp extends StatelessWidget {
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
+
+
+
   }
 }
 
@@ -45,6 +49,7 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
+
   final String title;
 
   @override
@@ -53,10 +58,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       //backgroundColor: const Color(0xF5F5F5F5),
       /*appBar: AppBar(
@@ -77,11 +80,13 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             HelloUser(),
-            StartNewWork(),
+            Hero(tag: "newWorkWidget", child: StartNewWork(0)),
             WhatDidYouDoThisWeek()
           ],
         ),
       ),
     );
   }
+
+
 }

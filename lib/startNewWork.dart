@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+import 'package:worknroll/workTime.dart';
+
 
 class StartNewWork extends StatelessWidget {
-  const StartNewWork({Key? key}) : super(key: key);
+  //const StartNewWork({Key? key}) : super(key: key);
+  final int pageIndex;
+  const StartNewWork(this.pageIndex);
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +21,8 @@ class StartNewWork extends StatelessWidget {
 
         appearance: CircularSliderAppearance(
           angleRange: 360,
-          size: 170,
+          startAngle: 270,
+          size: pageIndex==0 ?170 :230,
 
           customColors: CustomSliderColors(
           progressBarColor: const Color(0xFFf5f6fa),
@@ -27,7 +33,7 @@ class StartNewWork extends StatelessWidget {
             modifier: percentageModifier,
             mainLabelStyle: TextStyle(
               color: const Color(0xFFECF0F1),
-              fontSize: 30,
+              fontSize: pageIndex==0 ?30 :50,
               fontFamily: 'Roboto'
           )    
           )
@@ -41,18 +47,21 @@ class StartNewWork extends StatelessWidget {
     );
 
     final startButton = ElevatedButton(
-      onPressed: () {  },
+      onPressed: () {  Navigator.push(context, MaterialPageRoute(builder: (context) => WorkTime())); },
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF40739e)),
+        backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF192a56)),
       ),
       child: Text("Roll It!", style: TextStyle(fontFamily: "Roboto", color: const Color(0xFFECF0F1), fontSize: 17)),
     );
+
+
 
     return Container(
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           //color: Colors.whi,
-          borderRadius: BorderRadius.all(Radius.circular(30)),
+          borderRadius: pageIndex==0
+          ?BorderRadius.all(Radius.circular(30)) :null,
           boxShadow: [BoxShadow(
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
@@ -62,37 +71,35 @@ class StartNewWork extends StatelessWidget {
               begin: Alignment.bottomCenter,
               end: AlignmentDirectional.topCenter,
               colors: [
-                const Color(0xFF00a8ff),
                 const Color(0xFF0097e6),
+                const Color(0xFF00a8ff),
               ])
       ),
-      width: 270,
-      height: 270,
-      margin: EdgeInsets.all(25),
+
+      width: pageIndex == 0
+      ? 270 : MediaQuery.of(context).size.width,
+
+      height: pageIndex==0
+        ?270 :MediaQuery.of(context).size.height,
+
+      margin: pageIndex==0
+        ?EdgeInsets.all(25) :null,
 
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           slider,
-          SizedBox(height: 15),
+          SizedBox(height: 20 ),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-
-           children: <Widget>[
-             SizedBox(
+             if (pageIndex == 0) SizedBox(
                width: 200,
                height: 40,
                child: startButton
              )
 
+
            ],
-         )
-
-        ],
       )
-
-
     );
   }
 
