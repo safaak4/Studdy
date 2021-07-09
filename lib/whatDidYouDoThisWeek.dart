@@ -56,7 +56,7 @@ class WhatDidYouDoThisWeek extends StatelessWidget {
 
                 width: 100,
                 height: 100,
-                child: Center(child: Text(denemeList[index])),
+                child: Center(child: Text(denemeList[index], style: TextStyle(fontFamily: "Roboto", color: const Color(0xFF353b48)))),
              ),)
             ),
           ),

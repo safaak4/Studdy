@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-class helloUser extends StatelessWidget {
-  const helloUser({Key? key}) : super(key: key);
+class HelloUser extends StatelessWidget {
+  const HelloUser({Key? key}) : super(key: key);
 
   Widget smallContainer(containerColorr, textColorr, textList){
     
@@ -40,7 +40,7 @@ class helloUser extends StatelessWidget {
     
     return Container(
       width: double.infinity,
-      height: 250,
+      height: 240,
 
       child:
           Stack(
@@ -52,7 +52,7 @@ class helloUser extends StatelessWidget {
 
                     children: <Widget>[
 
-                      Container(width: MediaQuery.of(context).size.width * 0.5, height: 220,color: const Color(0xFF487eb0)),
+                      Container(width: MediaQuery.of(context).size.width * 0.5, height: 200,color: const Color(0xFF487eb0)),
                       smallContainer(const Color(0xFFf5f6fa), const Color(0xFF273c75), ["You Rolled This Week", "NULL", "times"])
                     ],
                   ),
@@ -62,7 +62,7 @@ class helloUser extends StatelessWidget {
 
                     children: <Widget>[
 
-                      Container(width: MediaQuery.of(context).size.width * 0.5, height: 220,color: const Color(0xFF40739e)),
+                      Container(width: MediaQuery.of(context).size.width * 0.5, height: 200,color: const Color(0xFF40739e)),
                       smallContainer(const Color(0xFF273c75), const Color(0xFFf5f6fa), ["Your Rank is", "# NULL", ""])
                     ],
                   ),
@@ -75,7 +75,7 @@ class helloUser extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(height: 60),
+                    SizedBox(height: 42),
                     Text("Hello Safak,", style: TextStyle(fontFamily: "RobotoMedium", color: const Color(0xFFecf0f1), fontSize: 25)),
                     Text("Welcome back!", style: TextStyle(fontFamily: "Roboto", color: const Color(0xFFecf0f1), fontSize: 22))
 
