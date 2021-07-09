@@ -44,7 +44,7 @@ class startNewWork extends StatelessWidget {
     final startButton = ElevatedButton(
       onPressed: () {  },
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF273c75)),
+        backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF40739e)),
       ),
       child: Text("Start", style: TextStyle(fontFamily: "Roboto", color: const Color(0xFFECF0F1), fontSize: 17)),
     );

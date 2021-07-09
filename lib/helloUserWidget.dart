@@ -22,12 +22,12 @@ class helloUser extends StatelessWidget {
       ),
       height: 95, width: 135,
       child: Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(textList[0], style: TextStyle(color: textColorr, fontFamily: "Roboto") ),
-            Text(textList[1],style: TextStyle(color: textColorr, fontFamily: "Roboto")),
+            Text(textList[1],style: TextStyle(color: textColorr, fontFamily: "Roboto", fontSize: 25)),
             Text(textList[2],style: TextStyle(color: textColorr, fontFamily: "Roboto"))
           ],
         ),
@@ -70,32 +70,22 @@ class helloUser extends StatelessWidget {
               ),
 
               Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(22.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(height: 60),
-                    Text("Hello Safak,", style: TextStyle(fontFamily: "Roboto", color: const Color(0xFFecf0f1), fontSize: 30)),
-                    Text("Welcome Back", style: TextStyle(fontFamily: "Roboto", color: const Color(0xFFecf0f1), fontSize: 30))
+                    Text("Hello Safak,", style: TextStyle(fontFamily: "RobotoMedium", color: const Color(0xFFecf0f1), fontSize: 25)),
+                    Text("Welcome back!", style: TextStyle(fontFamily: "Roboto", color: const Color(0xFFecf0f1), fontSize: 22))
 
                   ],
                 )
               ),
-
-
-              
             ],
           )
-      
-
-
     );
 
   }
-
-
-  
-  
 
 }
