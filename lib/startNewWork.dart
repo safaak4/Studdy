@@ -6,23 +6,28 @@ import 'package:worknroll/workTime.dart';
 class StartNewWork extends StatelessWidget {
   //const StartNewWork({Key? key}) : super(key: key);
   final int pageIndex;
-  const StartNewWork(this.pageIndex);
-
+  final double targetWorkTime;
+  const StartNewWork(this.pageIndex, this.targetWorkTime);
 
   @override
   Widget build(BuildContext context) {
+
 
     String percentageModifier(double value) {
       final roundedValue = (value.toInt() * 5).ceil().toInt().toString();
       return '$roundedValue';
     }
 
-    final slider = SleekCircularSlider(
+      double slideValue = 5;
+
+     final slider = SleekCircularSlider(
 
         appearance: CircularSliderAppearance(
           angleRange: 360,
           startAngle: 270,
           size: pageIndex==0 ?170 :230,
+
+          customWidths: CustomSliderWidths(progressBarWidth: 13),
 
           customColors: CustomSliderColors(
           progressBarColor: const Color(0xFFf5f6fa),
@@ -39,21 +44,26 @@ class StartNewWork extends StatelessWidget {
           )
 
         ),
-        onChange: (double value) {
-          print(value);
-        },
+
+        onChange:
+        (pageIndex == 0)  ?(double value) {slideValue = value;} :null,
+
         max: 25, min: 1,
-        initialValue: 5,
+
+        initialValue:
+        (pageIndex == 0)
+            ? 5
+            : targetWorkTime//targetWorkTime
+
     );
 
     final startButton = ElevatedButton(
-      onPressed: () {  Navigator.push(context, MaterialPageRoute(builder: (context) => WorkTime())); },
+      onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => WorkTime(slideValue))); },
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF192a56)),
       ),
       child: Text("Roll It!", style: TextStyle(fontFamily: "Roboto", color: const Color(0xFFECF0F1), fontSize: 17)),
     );
-
 
 
     return Container(
