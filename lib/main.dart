@@ -32,8 +32,6 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
 
-
-
   }
 }
 
@@ -61,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: const Color(0xF5F5F5F5),
+      //backgroundColor: const Color(0xFF001D3D),
       /*appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,

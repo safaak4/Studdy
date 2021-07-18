@@ -14,8 +14,13 @@ class StartNewWork extends StatelessWidget {
 
 
     String percentageModifier(double value) {
-      final roundedValue = (value.toInt() * 5).ceil().toInt().toString();
-      return '$roundedValue';
+      if(pageIndex ==0){
+        final roundedValue = (value.toInt() * 5).ceil().toString();
+        return '$roundedValue';
+      }else{
+        return "";
+      }
+
     }
 
       double slideValue = 5;
@@ -25,24 +30,22 @@ class StartNewWork extends StatelessWidget {
         appearance: CircularSliderAppearance(
           angleRange: 360,
           startAngle: 270,
-          size: pageIndex==0 ?170 :230,
+          size: pageIndex==0 ?185 :230,
 
-          customWidths: CustomSliderWidths(progressBarWidth: 13),
+          customWidths: CustomSliderWidths(progressBarWidth: 12),
 
           customColors: CustomSliderColors(
-          progressBarColor: const Color(0xFFf5f6fa),
-          dotColor: const Color(0xFF273c75)
+          progressBarColor: const Color(0xFFFFFFFF),
+          dotColor: const Color(0xFF1c1a19)
           ),
 
           infoProperties: InfoProperties(
             modifier: percentageModifier,
             mainLabelStyle: TextStyle(
-              color: const Color(0xFFECF0F1),
-              fontSize: pageIndex==0 ?30 :50,
-              fontFamily: 'Roboto'
-          )    
+              color: const Color(0xFFFFFFFF),
+              fontSize: pageIndex==0 ?40 :50,
+              fontFamily: 'Roboto'  )
           )
-
         ),
 
         onChange:
@@ -58,18 +61,17 @@ class StartNewWork extends StatelessWidget {
     );
 
     final startButton = ElevatedButton(
-      onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => WorkTime(slideValue))); },
+      onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => WorkTimeStateful(slideValue))); },
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF192a56)),
+        backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFfdbc2f)),
       ),
-      child: Text("Roll It!", style: TextStyle(fontFamily: "Roboto", color: const Color(0xFFECF0F1), fontSize: 17)),
+      child: Text("Roll It!", style: TextStyle(fontFamily: "Roboto", color: const Color(0xFF1c1a19), fontSize: 17)),
     );
 
 
     return Container(
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          //color: Colors.whi,
           borderRadius: pageIndex==0
           ?BorderRadius.all(Radius.circular(30)) :null,
           boxShadow: [BoxShadow(
@@ -77,20 +79,21 @@ class StartNewWork extends StatelessWidget {
             spreadRadius: 2,
             blurRadius: 5,
             offset: Offset(0, 4),)],
-          gradient: new LinearGradient(
+          color: const Color(0xFF1c1a19)
+          /*gradient: new LinearGradient(
               begin: Alignment.bottomCenter,
               end: AlignmentDirectional.topCenter,
               colors: [
                 const Color(0xFF0097e6),
                 const Color(0xFF00a8ff),
-              ])
+              ])*/
       ),
 
       width: pageIndex == 0
-      ? 270 : MediaQuery.of(context).size.width,
+      ? 380 : MediaQuery.of(context).size.width,
 
       height: pageIndex==0
-        ?270 :MediaQuery.of(context).size.height,
+        ?285 :MediaQuery.of(context).size.height,
 
       margin: pageIndex==0
         ?EdgeInsets.all(25) :null,
@@ -99,7 +102,7 @@ class StartNewWork extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           slider,
-          SizedBox(height: 20 ),
+          SizedBox(height: 15 ),
 
              if (pageIndex == 0) SizedBox(
                width: 200,

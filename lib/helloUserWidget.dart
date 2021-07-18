@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-class HelloUser extends StatelessWidget {
+/*class HelloUser extends StatelessWidget {
   const HelloUser({Key? key}) : super(key: key);
 
   Widget smallContainer(containerColorr, textColorr, textList){
@@ -88,4 +88,95 @@ class HelloUser extends StatelessWidget {
 
   }
 
+} */
+
+class HelloUser extends StatelessWidget {
+  const HelloUser({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    
+    Container statsContainer(textList) {
+      return Container(
+        decoration: BoxDecoration(
+        shape: BoxShape.rectangle,
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+        color: const Color(0xFFfdbc2f),
+        boxShadow: [BoxShadow(
+          color: Colors.grey.withOpacity(0.2),
+          spreadRadius: 1,
+          blurRadius: 8,
+          offset: Offset(0, 10),)],
+
+      ),
+        height: 100, width: MediaQuery.of(context).size.width * 0.5 - 30,
+        child: Padding(
+          padding: EdgeInsets.all(8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(textList[0], style: TextStyle(color: const Color(0xFF1c1a19), fontFamily: "Roboto") ),
+              Text(textList[1],style: TextStyle(color: const Color(0xFF1c1a19), fontFamily: "Roboto", fontSize: 25)),
+              Text(textList[2],style: TextStyle(color: const Color(0xFF1c1a19), fontFamily: "Roboto"))
+            ],
+          ),
+        ),
+      );
+    }
+    
+
+
+    return Container(
+
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(22), bottomRight: Radius.circular(22)),
+        color: const Color(0xFF1c1a19),
+      ),
+
+      width: double.infinity,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [Padding(
+
+            padding: EdgeInsets.only(left: 25, top: 50, bottom: 30),
+            child: Column(
+              //mainAxisAlignment: MainAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.center,
+
+
+              children: [
+                Text("Work'n Roll", style: TextStyle(fontFamily: "RobotoMedium", color: Colors.white, fontSize: 25)),
+                //Text("Safak", style: TextStyle(fontFamily: "RobotoMedium", color: const Color(0xFF353b48), fontSize: 30))
+              ],
+            )
+
+        ),
+
+
+
+
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              statsContainer(["Your Rolled This Week", "#NULL", "times"]),
+              SizedBox(width: 20),
+              statsContainer(["Your Rolled This Week", "#NULL", "times"])
+            ],
+          ),
+
+          SizedBox(height: 20)
+
+
+        ],
+      )
+
+
+
+
+
+    );
+  }
 }
+
