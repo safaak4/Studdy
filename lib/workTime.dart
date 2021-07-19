@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './startNewWork.dart';
@@ -32,22 +31,27 @@ class WorkTimeStateful extends StatefulWidget {
 
 class _WorkTimeStatefulState extends State<WorkTimeStateful> {
   //final double targetWorkMinute;
-  int _counter = 50;
+  double _counter = 50;
   late Timer _timer;
 
   @override
   void initState(){
     //_counter = (widget.targetWorkMinute).toInt()*5;
-    _timer = Timer.periodic(Duration(minutes: 1), (Timer timer) {
+
+    if (_counter == 50){
+      _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if(mounted) setState(() {
         if(_counter > 0){
           print(_counter.toString());
-          _counter = _counter - 1;
+          _counter = _counter - 0.5;
         }else{
           timer.cancel();
         }
       });
     });
+
+    }
+
   }
 
 
