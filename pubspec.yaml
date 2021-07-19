@@ -42,11 +42,11 @@ flutter:
   fonts:
     - family: Roboto
       fonts:
-        - asset: fonts/Roboto-Light.ttf
+        - asset: fonts/Poppins-Light.ttf
 
     - family: RobotoMedium
       fonts:
-        - asset: fonts/Roboto-Medium.ttf
+        - asset: fonts/Poppins-Medium.ttf
 
 
   # The following line ensures that the Material Icons font is

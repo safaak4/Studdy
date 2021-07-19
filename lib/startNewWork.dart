@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:worknroll/workTime.dart';
@@ -7,10 +9,13 @@ class StartNewWork extends StatelessWidget {
   //const StartNewWork({Key? key}) : super(key: key);
   final int pageIndex;
   final double targetWorkTime;
-  const StartNewWork(this.pageIndex, this.targetWorkTime);
+  final double counterNew;
+  const StartNewWork(this.pageIndex, this.targetWorkTime, this.counterNew);
+
 
   @override
   Widget build(BuildContext context) {
+
 
 
     String percentageModifier(double value) {
@@ -56,7 +61,7 @@ class StartNewWork extends StatelessWidget {
         initialValue:
         (pageIndex == 0)
             ? 5
-            : targetWorkTime//targetWorkTime
+            : counterNew//targetWorkTime
 
     );
 

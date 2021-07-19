@@ -78,10 +78,18 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             HelloUser(),
-            Hero(tag: "newWorkWidget", child: StartNewWork(0, 0)),
+            Hero(tag: "newWorkWidget", child: StartNewWork(0, 0, 0)),
             WhatDidYouDoThisWeek()
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: icon),
+          BottomNavigationBarItem(icon: icon),
+          BottomNavigationBarItem(icon: icon)
+
+        ],
       ),
     );
   }
