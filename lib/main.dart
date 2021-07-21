@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:studdy/fluttericonsfilled.dart';
 import './startNewWork.dart';
 import './helloUserWidget.dart';
 import './whatDidYouDoThisWeek.dart';
 
 
-void main() {
-  runApp(MyApp());
-}
 
 
 
@@ -16,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'WorknRoll',
+      title: 'Studdy',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -84,10 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        backgroundColor: const Color(0xFF1c1a19),
         items: [
-          BottomNavigationBarItem(icon: icon),
-          BottomNavigationBarItem(icon: icon),
-          BottomNavigationBarItem(icon: icon)
+          BottomNavigationBarItem(icon: new Icon(IconsPack.friendslineal, color: Colors.white), label: ""),
+          BottomNavigationBarItem(icon: new Icon(IconsPack.homelineal, color: Colors.white), label: ""),
+          BottomNavigationBarItem(icon: new Icon(IconsPack.userlineal, color: Colors.white), label: ""),
+
 
         ],
       ),

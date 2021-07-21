@@ -1,4 +1,4 @@
-name: worknroll
+name: studdy
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -48,6 +48,9 @@ flutter:
       fonts:
         - asset: fonts/Poppins-Medium.ttf
 
+    - family: FlutterIcons
+      fonts:
+        - asset: icons/FlutterIcons.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
-import 'package:worknroll/workTime.dart';
+import 'package:studdy/workTime.dart';
 
 
 class StartNewWork extends StatelessWidget {
