@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 
 /*class HelloUser extends StatelessWidget {
@@ -146,7 +147,11 @@ class HelloUser extends StatelessWidget {
 
 
               children: [
-                Text("Work'n Roll", style: TextStyle(fontFamily: "RobotoMedium", color: Colors.white, fontSize: 25)),
+                Hero(tag: "upperLogo", child: SvgPicture.asset(
+                  'images/studdyLogoSVG.svg', color: Colors.white, width: 100,
+                ))
+
+                //Text("Work'n Roll", style: TextStyle(fontFamily: "RobotoMedium", color: Colors.white, fontSize: 25)),
                 //Text("Safak", style: TextStyle(fontFamily: "RobotoMedium", color: const Color(0xFF353b48), fontSize: 30))
               ],
             )

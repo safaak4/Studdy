@@ -121,6 +121,6 @@ class IconsPack {
   static const IconData emojilineal = IconData(0xe861, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData facebookfilled = IconData(0xe862, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData facebooklineal = IconData(0xe863, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-
+  static const IconData lock = IconData(0xe864, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 
 }
