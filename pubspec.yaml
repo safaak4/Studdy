@@ -23,13 +23,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  sleek_circular_slider : 2.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_svg: ^0.22.0
+  numberpicker: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -41,11 +41,19 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   fonts:
-    - family: Roboto
+    - family: PoppinsLight
       fonts:
         - asset: fonts/Poppins-Light.ttf
 
-    - family: RobotoMedium
+    - family: PoppinsSemiBold
+      fonts:
+        - asset: fonts/Poppins-SemiBold.ttf
+
+    - family: PoppinsThin
+      fonts:
+        - asset: fonts/Poppins-Thin.ttf
+
+    - family: PoppinsMedium
       fonts:
         - asset: fonts/Poppins-Medium.ttf
 
@@ -55,6 +63,7 @@ flutter:
 
   assets:
     - images/studdyLogoSVG.svg
+    - images/getstartedillustration.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

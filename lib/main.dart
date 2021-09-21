@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             HelloUser(),
-            Hero(tag: "newWorkWidget", child: StartNewWork(0, 0, 0)),
+            StartNewWork(),
             WhatDidYouDoThisWeek()
           ],
         ),
@@ -84,11 +84,11 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        backgroundColor: const Color(0xFF1c1a19),
+        backgroundColor: const Color(0xffffffff),
         items: [
-          BottomNavigationBarItem(icon: new Icon(IconsPack.friendslineal, color: Colors.white), label: ""),
-          BottomNavigationBarItem(icon: new Icon(IconsPack.homelineal, color: Colors.white), label: ""),
-          BottomNavigationBarItem(icon: new Icon(IconsPack.userlineal, color: Colors.white), label: ""),
+          BottomNavigationBarItem(icon: new Icon(IconsPack.homefilled, color:  const Color(0xFF131313)), label: ""),
+          BottomNavigationBarItem(icon: new Icon(IconsPack.friendsfilled, color: const Color(0xFF131313)), label: ""),
+          BottomNavigationBarItem(icon: new Icon(IconsPack.userfilled, color:  const Color(0xFF131313)), label: ""),
 
 
         ],

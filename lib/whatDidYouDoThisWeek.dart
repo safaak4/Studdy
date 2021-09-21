@@ -22,7 +22,8 @@ class WhatDidYouDoThisWeek extends StatelessWidget {
 
               children: [
 
-                Text("What Did You Do This Week", style: TextStyle(color: const Color(0xFF353b48), fontFamily: "RobotoMedium", fontSize: 19)),
+                Text("What Did You Do This Week", style: TextStyle(color: const Color(0xFF131313), fontFamily: "PoppinsSemiBold",
+                    fontSize: 18)),
                 Spacer(),
                 TextButton(onPressed: null, child: Text("See All"))
               ],
@@ -43,7 +44,7 @@ class WhatDidYouDoThisWeek extends StatelessWidget {
                   decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.all(Radius.circular(15)),
-                  color: const Color(0xFFfbc531),
+                  color: const Color(0xFFf3c6c0),
 
                   boxShadow: [BoxShadow(
                   color: Colors.grey.withOpacity(0.3),
@@ -56,7 +57,7 @@ class WhatDidYouDoThisWeek extends StatelessWidget {
 
                 width: 100,
                 height: 100,
-                child: Center(child: Text(denemeList[index], style: TextStyle(fontFamily: "Roboto", color: const Color(0xFF353b48)))),
+                child: Center(child: Text(denemeList[index], style: TextStyle(fontFamily: "PoppinsLight", color: const Color(0xFF353b48)))),
              ),)
             ),
           ),
