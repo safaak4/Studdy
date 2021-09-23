@@ -2,33 +2,31 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:studdy/fluttericonsfilled.dart';
-import 'package:studdy/main.dart';
-import 'package:studdy/signuppage.dart';
 
 void main() {
-  runApp(loginpage());
+  runApp(signuppage());
 }
 
 
-class loginpage extends StatelessWidget {
-  const loginpage({Key? key}) : super(key: key);
+class signuppage extends StatelessWidget {
+  const signuppage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
 
-    return MaterialApp(home: loginpagestateful());
+    return MaterialApp(home: signuppagestateful());
   }
 }
 
-class loginpagestateful extends StatefulWidget {
-  const loginpagestateful({Key? key}) : super(key: key);
+class signuppagestateful extends StatefulWidget {
+  const signuppagestateful({Key? key}) : super(key: key);
 
   @override
-  _loginpagestatefulstate createState() => _loginpagestatefulstate();
+  _signuppagestatefulstate createState() => _signuppagestatefulstate();
 }
 
-class _loginpagestatefulstate extends State<loginpagestateful> {
+class _signuppagestatefulstate extends State<signuppagestateful> {
 
 
 
@@ -38,7 +36,7 @@ class _loginpagestatefulstate extends State<loginpagestateful> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
 
         body: Stack(
@@ -55,6 +53,47 @@ class _loginpagestatefulstate extends State<loginpagestateful> {
                   children: [
                     Hero(tag: "upperLogo", child: SvgPicture.asset( 'images/studdyLogoSVG.svg', color: const Color(0xFFFD794F), width: 115,)),
                     SizedBox(height: 50),
+
+                    Container(
+                      alignment: Alignment.center,
+                      height: 50,
+                      width: 250,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(90)),
+                          boxShadow: [BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            spreadRadius: 0,
+                            blurRadius: 6,
+                            offset: Offset(0, 3),)],
+                          color: Colors.white
+                      ),
+
+                      child:
+
+                      TextField(
+                        style: TextStyle(
+                          color: const Color(0xFF1c1a19),
+                          fontFamily: 'PoppinsLight',
+                        ),
+
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          //contentPadding: EdgeInsets.only(top: 14),
+
+
+                          prefixIcon: Icon(
+                            IconsPack.messagelineal,
+                            color: const Color(0xFF1c1a19),
+
+                          ),
+                          hintText: 'Email',
+                        ),
+                      ),
+                    ), //email
+
+                    SizedBox(height: 25),
                     Hero(tag: "usernamehero", child: Material(
                       type: MaterialType.transparency,
                       child: Container(
@@ -100,7 +139,7 @@ class _loginpagestatefulstate extends State<loginpagestateful> {
 
                     Hero(tag: "passwordhero", child: Material(
                       type: MaterialType.transparency,
-                      child:   Container(
+                      child: Container(
                         alignment: Alignment.center,
                         height: 50,
                         width: 250,
@@ -162,7 +201,7 @@ class _loginpagestatefulstate extends State<loginpagestateful> {
                         child: SizedBox(
                             width: 350, height: 50,
                             child: ElevatedButton(
-                              onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage())); },
+                              onPressed: null,
 
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF3F8A89)),
@@ -173,28 +212,12 @@ class _loginpagestatefulstate extends State<loginpagestateful> {
                                         borderRadius: BorderRadius.circular(90),
                                         side: BorderSide(color: Colors.white))),
                               ),
-                              child: Text("SIGN IN", style: TextStyle(color: const Color(0xFFFFFFFF), fontFamily: "PoppinsMedium"),),
+                              child: Text("SIGN UP", style: TextStyle(color: const Color(0xFFFFFFFF), fontFamily: "PoppinsMedium"),),
                             )
                         )
                     )),
-                    
+
                     SizedBox(height: 0),
-                    
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("New to Studdy?", style: TextStyle(fontFamily: "PoppinsLight", fontSize: 14, color: const Color(0xff3f8a89))),
-                        TextButton(onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => signuppage()));},
-                            child: Text("SIGN UP",
-                            style: TextStyle(fontFamily: "PoppinsSemiBold", fontSize: 14, color: const Color(0xfffd794f))))
-
-
-
-                      ],
-                      
-                    )
-
-
                   ],
                 ),
 
@@ -203,8 +226,8 @@ class _loginpagestatefulstate extends State<loginpagestateful> {
 
 
 
-      ]
-          )
+            ]
+        )
     );
   }
 }

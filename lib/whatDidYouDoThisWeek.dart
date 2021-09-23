@@ -31,8 +31,8 @@ class WhatDidYouDoThisWeek extends StatelessWidget {
           ),
 
 
-          SizedBox(
-            height: 114.0,
+          Container(
+            height: 110,
             child: ListView.builder(
               physics: ClampingScrollPhysics(),
               shrinkWrap: true,
@@ -44,7 +44,7 @@ class WhatDidYouDoThisWeek extends StatelessWidget {
                   decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.all(Radius.circular(15)),
-                  color: const Color(0xFFf3c6c0),
+                  color: Colors.white,
 
                   boxShadow: [BoxShadow(
                   color: Colors.grey.withOpacity(0.3),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:studdy/fluttericonsfilled.dart';
+import 'package:studdy/rankamongfriends.dart';
 import './startNewWork.dart';
 import './helloUserWidget.dart';
 import './whatDidYouDoThisWeek.dart';
@@ -77,6 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             HelloUser(),
             StartNewWork(),
+            SizedBox(height: 10),
+            rankamongfriends(),
             WhatDidYouDoThisWeek()
           ],
         ),

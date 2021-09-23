@@ -24,6 +24,8 @@ class startnewworkstateful extends StatefulWidget {
 }
 
 class _startnewworkstatefulState extends State<startnewworkstateful> {
+  List<String> lessonsList = ["Math", "Physics", "Chemistry", "Biology", "Art"];
+  int selectedlessonindex=250;
 
 
   @override
@@ -57,8 +59,45 @@ class _startnewworkstatefulState extends State<startnewworkstateful> {
 
               },
             ),
+            Container(
+                height: 45,
+                width: 335,
+                child: ListView.builder(
+                    physics: ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: lessonsList.length,
+                    itemBuilder: (BuildContext context, int index) => Padding(padding: EdgeInsets.all(7),
 
-            SizedBox(height: 20),
+                        child: GestureDetector(
+                        onTap: () { setState(() {
+                          selectedlessonindex = index;
+                        }); },
+                        child: Container(
+
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: (selectedlessonindex==index)? const Color(0xff3f8a89) : const Color(0xffffffff),
+
+                          boxShadow: [BoxShadow(
+                            color: Colors.grey.withOpacity(0.2),
+                            spreadRadius: 1,
+                            blurRadius: 6,
+                            offset: Offset(0, 3),)],
+                        ),
+
+                        width: 80,
+                        height: 45,
+                        child: Center(child: Text(lessonsList[index], style: TextStyle(fontFamily: "PoppinsLight",
+                            color:  (selectedlessonindex==index)? Colors.white :const Color(0xFF353b48)))),
+                      ),
+                    ))
+                ),
+              ),
+
+
+            SizedBox(height: 8),
 
             Hero(tag: "loginButtonHero", child: Container(
                 alignment: Alignment.center,
@@ -90,7 +129,7 @@ class _startnewworkstatefulState extends State<startnewworkstateful> {
                                 borderRadius: BorderRadius.circular(90),
                                 side: BorderSide(color: Colors.white))),
                       ),
-                      child: Text("Roll it", style: TextStyle(color: const Color(0xFFFFFFFF), fontFamily: "PoppinsLight"),),
+                      child: Text("Start timer", style: TextStyle(color: const Color(0xFFFFFFFF), fontFamily: "PoppinsLight"),),
                     )
                 )
             ))
