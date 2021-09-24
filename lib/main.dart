@@ -80,6 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
             StartNewWork(),
             SizedBox(height: 10),
             rankamongfriends(),
+            SizedBox(height: 10),
             WhatDidYouDoThisWeek()
           ],
         ),
