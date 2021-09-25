@@ -57,6 +57,10 @@ flutter:
       fonts:
         - asset: fonts/Poppins-Medium.ttf
 
+    - family: UniSansBold
+      fonts:
+        - asset: fonts/UniSansBold.otf
+
     - family: FlutterIcons
       fonts:
         - asset: icons/FlutterIcons.ttf

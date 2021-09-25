@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:studdy/workingprocess.dart';
 
 
 class StartNewWork extends StatelessWidget {
@@ -26,11 +27,11 @@ class startnewworkstateful extends StatefulWidget {
 class _startnewworkstatefulState extends State<startnewworkstateful> {
   List<String> lessonsList = ["Math", "Physics", "Chemistry", "Biology", "Art"];
   int selectedlessonindex=250;
+  int currentIntValue =10;
 
 
   @override
   Widget build(BuildContext context) {
-    int _currentIntValue =10;
 
     return Container(
 
@@ -40,25 +41,25 @@ class _startnewworkstatefulState extends State<startnewworkstateful> {
 
             SizedBox(height: 25),
 
-            StatefulBuilder(
+            Hero(tag: "numberpickerhero", child: StatefulBuilder(
               builder: (context4, setState2) {
                 return NumberPicker(
-                      textStyle: TextStyle(fontSize: 25, color: const Color(
-                          0x9A4E4E4E)),
-                      selectedTextStyle: TextStyle(fontSize: 35),
-                      value: _currentIntValue,
-                      minValue: 0,
-                      step: 5,
-                      maxValue: 120,
-                      itemWidth: 85,
-                      haptics: true,
-                      axis: Axis.horizontal,
-                      onChanged: (value) => setState2(() => _currentIntValue = value),
-                    );
+                  textStyle: TextStyle(fontSize: 25, color: const Color(
+                      0x9A4E4E4E)),
+                  selectedTextStyle: TextStyle(fontSize: 35),
+                  value: currentIntValue,
+                  minValue: 5,
+                  step: 5,
+                  maxValue: 120,
+                  itemWidth: 85,
+                  haptics: true,
+                  axis: Axis.horizontal,
+                  onChanged: (value) => setState2(() => currentIntValue = value),
+                );
 
 
               },
-            ),
+            )),
             Container(
                 height: 45,
                 width: 335,
@@ -118,7 +119,7 @@ class _startnewworkstatefulState extends State<startnewworkstateful> {
                 child: SizedBox(
                     width: 350, height: 50,
                     child: ElevatedButton(
-                      onPressed: () { },
+                      onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => workingprocess(selectedtime: currentIntValue))); },
 
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF3F8A89)),
