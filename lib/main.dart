@@ -54,7 +54,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
+  int pageindex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
         ),
       ),*/
-      body: SingleChildScrollView(
+      body: (pageindex==0)?SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -84,7 +84,13 @@ class _MyHomePageState extends State<MyHomePage> {
             WhatDidYouDoThisWeek()
           ],
         ),
-      ),
+      ) :(pageindex == 1) ?Container(width: double.infinity,
+          child: Text("1"))
+
+      :Container(width: double.infinity,
+          child: Text("2")),
+
+
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -96,6 +102,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
         ],
+        onTap: (index) {
+          setState(() {
+            pageindex = index;
+          });
+        }
       ),
     );
   }

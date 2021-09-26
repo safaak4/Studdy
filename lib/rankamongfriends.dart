@@ -4,6 +4,8 @@ import 'dart:collection';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'friends.dart';
+
 class rankamongfriends extends StatelessWidget {
   const rankamongfriends({Key? key}) : super(key: key);
 
@@ -50,7 +52,8 @@ class _rankamongfriendsstfulState extends State<rankamongfriendsstful> {
                       Text("Score Table", style: TextStyle(color: const Color(0xFF131313), fontFamily: "PoppinsSemiBold",
                           fontSize: 18)),
                       Spacer(),
-                      TextButton(onPressed: null, child: Text("See All"))
+                      TextButton(onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => friendslist())); },
+                          child: Text("See All"))
                     ],
 
 
