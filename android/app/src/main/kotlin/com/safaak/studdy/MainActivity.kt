@@ -1,4 +1,4 @@
-package com.example.worknroll
+package com.safaak.studdy
 
 import io.flutter.embedding.android.FlutterActivity
 
