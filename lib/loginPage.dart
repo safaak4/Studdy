@@ -5,6 +5,11 @@ import 'package:studdy/fluttericonsfilled.dart';
 import 'package:studdy/main.dart';
 import 'package:studdy/signuppage.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
 void main() {
   runApp(loginpage());
 }
@@ -15,9 +20,10 @@ class loginpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Firebase.initializeApp();
 
 
-    return MaterialApp(home: loginpagestateful());
+    return Scaffold(body: loginpagestateful());
   }
 }
 
@@ -31,6 +37,90 @@ class loginpagestateful extends StatefulWidget {
 class _loginpagestatefulstate extends State<loginpagestateful> {
 
 
+  logincheck() async {
+
+    try {
+      var userdoc = await FirebaseFirestore.instance.collection("Users").doc(usernamecontroller.text).get();
+      var userpswrd = userdoc.data()!["UserPassword"];
+
+       if(passwordcontroller.text == userpswrd){
+         var usermail = userdoc.data()!["UserEmail"];
+
+
+
+         await FirebaseAuth.instance.signInWithEmailAndPassword(
+             email: usermail,
+             password: passwordcontroller.text
+         ).then((value) => {
+
+             Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()))
+
+
+
+         });
+
+
+       }else{
+         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+           content: Text("Username or password is wrong. But I am not sure which one is wrong."),
+         ));
+
+       }
+
+    } catch (e){
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("It seems we encountered an unexpected error. Could you please report this to my developer? Error: "
+        + e.toString()),
+      ));
+
+    }
+
+
+
+    /*try {
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: "barry.allen@example.com",
+          password: "SuperSecretPassword!"
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }*/
+
+
+
+    /*var targetdoc =  await FirebaseFirestore.instance.collection("Users").doc(usernamecontroller.text).get();
+
+    if (targetdoc == null){
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Have you tried to sign-up? Because I can't find this user."),
+      ));
+
+    }else if (passwordcontroller.text == targetdoc.data()!["UserPassword"]){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
+
+    }else if (passwordcontroller.text != targetdoc.data()!["UserPassword"]){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Username or password is wrong. But I am not sure which one is wrong."),
+      ));
+
+    }else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("It seems we encountered an unexpected error. Could you please report this to my developer?"),
+      ));
+
+    }*/
+
+  }
+
+
+  final passwordcontroller = TextEditingController();
+  final usernamecontroller = TextEditingController();
 
   double sizeback = 365;
   double sizefront = 210;
@@ -76,6 +166,7 @@ class _loginpagestatefulstate extends State<loginpagestateful> {
                         child:
 
                         TextField(
+                          controller: usernamecontroller,
                           style: TextStyle(
                             color: const Color(0xFF1c1a19),
                             fontFamily: 'PoppinsLight',
@@ -119,6 +210,7 @@ class _loginpagestatefulstate extends State<loginpagestateful> {
                         child:
 
                         TextField(
+                          controller: passwordcontroller,
                           obscureText: true,
                           style: TextStyle(
                             color: const Color(0xFF1c1a19),
@@ -162,7 +254,7 @@ class _loginpagestatefulstate extends State<loginpagestateful> {
                         child: SizedBox(
                             width: 350, height: 50,
                             child: ElevatedButton(
-                              onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage())); },
+                              onPressed: logincheck,
 
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF3F8A89)),
@@ -184,7 +276,13 @@ class _loginpagestatefulstate extends State<loginpagestateful> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("New to Studdy?", style: TextStyle(fontFamily: "PoppinsLight", fontSize: 14, color: const Color(0xff3f8a89))),
-                        TextButton(onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => signuppage()));},
+                        TextButton(onPressed: () {
+
+
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => signuppage()));
+
+
+                          },
                             child: Text("SIGN UP",
                             style: TextStyle(fontFamily: "PoppinsSemiBold", fontSize: 14, color: const Color(0xfffd794f))))
 

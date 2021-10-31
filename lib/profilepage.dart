@@ -24,19 +24,10 @@ class _profileapgestfulState extends State<profileapgestful> {
     return Scaffold(
 
       body: SingleChildScrollView(
-        child: Container(
-
-          child: Positioned(
-            left: 10,
-            top: 50  ,
-            child: Text("My Profile", style: TextStyle(color: Colors.black, fontFamily: "PoppinsSemiBold", fontSize: 18)),
-
-
-
-          )
-
-
-
+        child: Align(
+          alignment: Alignment.topCenter,
+          //child: ,
+          //31 ekim burada kaldın!
 
         )
 

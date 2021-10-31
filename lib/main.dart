@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:studdy/fluttericonsfilled.dart';
+import 'package:studdy/profilepage.dart';
 import 'package:studdy/rankamongfriends.dart';
 import './startNewWork.dart';
 import './helloUserWidget.dart';
@@ -88,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Text("1"))
 
       :Container(width: double.infinity,
-          child: Text("2")),
+          child: profilepage()),
 
 
       bottomNavigationBar: BottomNavigationBar(

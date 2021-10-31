@@ -4,9 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-import 'src/authentication.dart';
 
 
 import 'package:flutter_svg/svg.dart';
@@ -22,24 +19,28 @@ class signuppage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      // Initialize FlutterFire
-      future: Firebase.initializeApp(),
-      builder: (context, snapshot) {
-        // Check for errors
-        if (snapshot.hasError) {
-          //return SomethingWentWrong();
-        }
+    Firebase.initializeApp();
+    return Scaffold(body: signuppagestateful());
+   /* return Scaffold(
+      body: FutureBuilder(
+        // Initialize FlutterFire
+        future: Firebase.initializeApp(),
+        builder: (context, snapshot) {
+          // Check for errors
+          if (snapshot.hasError) {
+            //return SomethingWentWrong();
+          }
 
-        // Once complete, show your application
-        if (snapshot.connectionState == ConnectionState.done) {
-          return MaterialApp(home: signuppagestateful());
-        }
+          // Once complete, show your application
+          if (snapshot.connectionState == ConnectionState.done) {
+            return Scaffold(body: signuppagestateful());
+          }
 
-        // Otherwise, show something whilst waiting for initialization to complete
-        return Text("sa");
-      },
-    );
+          // Otherwise, show something whilst waiting for initialization to complete
+          return Text("sa");
+        },
+      ),
+    );*/
   }
 }
 
@@ -66,16 +67,45 @@ class _signuppagestatefulstate extends State<signuppagestateful> {
 
   signUpFunction() async {
 
+
     if(emailcontroller.text != "" && passwordcontroller.text != "" && passwordcontroller.text.length >= 6) {
 
       try{
 
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailcontroller.text, password: passwordcontroller.text)
-            .then((kullanici) {FirebaseFirestore.instance.collection("Users").doc(usernamecontroller.text)
-            .set({"UserEmail": emailcontroller.text, "UserUsername": usernamecontroller.text,
-          "UserPassword": passwordcontroller.text});
-            });
+        await FirebaseFirestore.instance.collection("Users").doc(usernamecontroller.text).get().then((doc) => {
+
+                if (doc.exists == false){
+
+                    FirebaseFirestore.instance.collection("Users").doc(usernamecontroller.text)
+                      .set({"UserEmail": emailcontroller.text, "UserUsername": usernamecontroller.text,
+                        "UserPassword": passwordcontroller.text}).then((user) {
+
+                      FirebaseAuth.instance.createUserWithEmailAndPassword(
+                          email: emailcontroller.text, password: passwordcontroller.text).then((user) => {
+
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("You have successfully registered. Yes, successfully."),
+                        )),
+
+                        Navigator.pop(context)
+
+                      });
+
+                   })
+
+                }else{
+
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                   content: Text("This email is already using."),
+                    ))
+                }
+
+
+              });
+
+
+
+
 
       }
 
@@ -114,6 +144,10 @@ class _signuppagestatefulstate extends State<signuppagestateful> {
 
   @override
   Widget build(BuildContext context) {
+
+
+
+
     return Scaffold(
         backgroundColor: Colors.white,
 
@@ -138,7 +172,8 @@ class _signuppagestatefulstate extends State<signuppagestateful> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Hero(tag: "upperLogo", child: SvgPicture.asset( 'images/studdyLogoSVG.svg', color: const Color(0xFFFD794F), width: 115,)),
+                          Hero(tag: "upperLogo", child: SvgPicture.asset( 'images/studdyLogoSVG.svg', color: const Color(
+                              0xFFFD794F), width: 115,)),
                           SizedBox(height: 50),
 
                           Container(
