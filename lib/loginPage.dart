@@ -10,7 +10,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
-void main() {
+Future<void> main() async {
+  await Firebase.initializeApp();
   runApp(loginpage());
 }
 
@@ -20,7 +21,6 @@ class loginpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Firebase.initializeApp();
 
 
     return Scaffold(body: loginpagestateful());
